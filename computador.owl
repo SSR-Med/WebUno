@@ -1,0 +1,268 @@
+@prefix : <http://www.computador.org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.computador.org> .
+
+<http://www.computador.org> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.computador.org#es_Componente_De
+:es_Componente_De rdf:type owl:ObjectProperty ;
+                  owl:inverseOf :tiene_Componente ;
+                  rdf:type owl:TransitiveProperty .
+
+
+###  http://www.computador.org#es_Gabinete_De
+:es_Gabinete_De rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :es_Componente_De .
+
+
+###  http://www.computador.org#es_Parte_De
+:es_Parte_De rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :es_Componente_De .
+
+
+###  http://www.computador.org#tiene_Componente
+:tiene_Componente rdf:type owl:ObjectProperty .
+
+
+###  http://www.computador.org#tiene_Gabinete
+:tiene_Gabinete rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :tiene_Componente ;
+                rdf:type owl:FunctionalProperty ;
+                rdfs:domain :Computador ;
+                rdfs:range :Gabinete .
+
+
+###  http://www.computador.org#tiene_Parte
+:tiene_Parte rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :tiene_Componente ;
+             rdfs:domain :Computador ;
+             rdfs:range :Parte_Computador .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.computador.org#tiene_Precio
+:tiene_Precio rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Computador ;
+              rdfs:range xsd:int .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.computador.org#ATX
+:ATX rdf:type owl:Class ;
+     rdfs:subClassOf :Board .
+
+
+###  http://www.computador.org#Acer_Chromebook_15CB315
+:Acer_Chromebook_15CB315 rdf:type owl:Class ;
+                         rdfs:subClassOf :Chromebook .
+
+
+###  http://www.computador.org#Acer_Nitro5
+:Acer_Nitro5 rdf:type owl:Class ;
+             rdfs:subClassOf :Computador .
+
+
+###  http://www.computador.org#Aire
+:Aire rdf:type owl:Class ;
+      rdfs:subClassOf :Cooler .
+
+
+###  http://www.computador.org#Board
+:Board rdf:type owl:Class ;
+       rdfs:subClassOf :Parte_Computador .
+
+
+###  http://www.computador.org#CPU
+:CPU rdf:type owl:Class ;
+     rdfs:subClassOf :Parte_Computador .
+
+
+###  http://www.computador.org#Chromebook
+:Chromebook rdf:type owl:Class ;
+            rdfs:subClassOf :Computador .
+
+
+###  http://www.computador.org#Chromebook_Flip
+:Chromebook_Flip rdf:type owl:Class ;
+                 rdfs:subClassOf :Chromebook .
+
+
+###  http://www.computador.org#Computador
+:Computador rdf:type owl:Class .
+
+
+###  http://www.computador.org#Cooler
+:Cooler rdf:type owl:Class ;
+        rdfs:subClassOf :Parte_Computador .
+
+
+###  http://www.computador.org#Dedicada
+:Dedicada rdf:type owl:Class ;
+          rdfs:subClassOf :GPU .
+
+
+###  http://www.computador.org#Disco_Duro
+:Disco_Duro rdf:type owl:Class ;
+            rdfs:subClassOf :Parte_Computador .
+
+
+###  http://www.computador.org#Dual_Core
+:Dual_Core rdf:type owl:Class ;
+           rdfs:subClassOf :CPU .
+
+
+###  http://www.computador.org#EATX
+:EATX rdf:type owl:Class ;
+      rdfs:subClassOf :Board .
+
+
+###  http://www.computador.org#GPU
+:GPU rdf:type owl:Class ;
+     rdfs:subClassOf :Parte_Computador .
+
+
+###  http://www.computador.org#Gabinete
+:Gabinete rdf:type owl:Class ;
+          owl:disjointWith :Parte_Computador .
+
+
+###  http://www.computador.org#HDD
+:HDD rdf:type owl:Class ;
+     rdfs:subClassOf :Disco_Duro .
+
+
+###  http://www.computador.org#Hibrida
+:Hibrida rdf:type owl:Class ;
+         rdfs:subClassOf :GPU .
+
+
+###  http://www.computador.org#Integrada
+:Integrada rdf:type owl:Class ;
+           rdfs:subClassOf :GPU .
+
+
+###  http://www.computador.org#Liquido
+:Liquido rdf:type owl:Class ;
+         rdfs:subClassOf :Cooler .
+
+
+###  http://www.computador.org#MacBook_Pro_14
+:MacBook_Pro_14 rdf:type owl:Class ;
+                rdfs:subClassOf :Macbook_Pro .
+
+
+###  http://www.computador.org#MacBook_Pro_M2
+:MacBook_Pro_M2 rdf:type owl:Class ;
+                rdfs:subClassOf :Macbook_Pro .
+
+
+###  http://www.computador.org#Macbook_Pro
+:Macbook_Pro rdf:type owl:Class ;
+             rdfs:subClassOf :Computador .
+
+
+###  http://www.computador.org#Micro-ATX
+:Micro-ATX rdf:type owl:Class ;
+           rdfs:subClassOf :Board .
+
+
+###  http://www.computador.org#Mini-ITX
+:Mini-ITX rdf:type owl:Class ;
+          rdfs:subClassOf :Board .
+
+
+###  http://www.computador.org#Octa_Core
+:Octa_Core rdf:type owl:Class ;
+           rdfs:subClassOf :CPU .
+
+
+###  http://www.computador.org#Parte_Computador
+:Parte_Computador rdf:type owl:Class .
+
+
+###  http://www.computador.org#Portatil
+:Portatil rdf:type owl:Class ;
+          rdfs:subClassOf :Gabinete ;
+          owl:disjointWith :Torre .
+
+
+###  http://www.computador.org#Quad_Core
+:Quad_Core rdf:type owl:Class ;
+           rdfs:subClassOf :CPU .
+
+
+###  http://www.computador.org#SSD
+:SSD rdf:type owl:Class ;
+     rdfs:subClassOf :Disco_Duro .
+
+
+###  http://www.computador.org#Single_Core
+:Single_Core rdf:type owl:Class ;
+             rdfs:subClassOf :CPU .
+
+
+###  http://www.computador.org#ThinkPad
+:ThinkPad rdf:type owl:Class ;
+          rdfs:subClassOf :Computador .
+
+
+###  http://www.computador.org#ThinkPad_T14_G3
+:ThinkPad_T14_G3 rdf:type owl:Class ;
+                 rdfs:subClassOf :ThinkPad .
+
+
+###  http://www.computador.org#ThinkPad_X1_Carbon
+:ThinkPad_X1_Carbon rdf:type owl:Class ;
+                    rdfs:subClassOf :ThinkPad .
+
+
+###  http://www.computador.org#Torre
+:Torre rdf:type owl:Class ;
+       rdfs:subClassOf :Gabinete .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :ATX
+                :EATX
+                :Micro-ATX
+                :Mini-ITX
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Dedicada
+                :Hibrida
+                :Integrada
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Dual_Core
+                :Octa_Core
+                :Quad_Core
+                :Single_Core
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
