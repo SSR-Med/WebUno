@@ -164,7 +164,7 @@
 
 ###  http://www.computador.org#Acer_Nitro5
 :Acer_Nitro5 rdf:type owl:Class ;
-             rdfs:subClassOf :Disenos_Computadores ,
+             rdfs:subClassOf :Marca_Modelo ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :tiene_Parte ;
                                owl:someValuesFrom :Micro-ATX
@@ -199,8 +199,8 @@
 
 ###  http://www.computador.org#Aire
 :Aire rdf:type owl:Class ;
-      rdfs:subClassOf :Cooler ;
-      rdfs:comment "Cooler de tipo aire"^^xsd:string ;
+      rdfs:subClassOf :Tipo_Refrigeracion ;
+      rdfs:comment "Tipo_Refrigeracion de tipo aire"^^xsd:string ;
       rdfs:label "Aire"^^xsd:string .
 
 
@@ -211,16 +211,9 @@
        rdfs:label "Board"^^xsd:string .
 
 
-###  http://www.computador.org#CPU
-:CPU rdf:type owl:Class ;
-     rdfs:subClassOf :Parte_Computador ;
-     rdfs:comment "Un procesador"^^xsd:string ;
-     rdfs:label "CPU"^^xsd:string .
-
-
 ###  http://www.computador.org#Chromebook
 :Chromebook rdf:type owl:Class ;
-            rdfs:subClassOf :Disenos_Computadores ;
+            rdfs:subClassOf :Marca_Modelo ;
             rdfs:comment "La línea de computadores Chromebook"^^xsd:string ;
             rdfs:label "Chromebook"^^xsd:string .
 
@@ -358,13 +351,6 @@
                     rdfs:label "Computador_Oficina"^^xsd:string .
 
 
-###  http://www.computador.org#Cooler
-:Cooler rdf:type owl:Class ;
-        rdfs:subClassOf :Parte_Computador ;
-        rdfs:comment "Refrigeración para la CPU del computador"^^xsd:string ;
-        rdfs:label "Cooler"^^xsd:string .
-
-
 ###  http://www.computador.org#Dedicada
 :Dedicada rdf:type owl:Class ;
           rdfs:subClassOf :GPU ;
@@ -379,16 +365,9 @@
             rdfs:label "Disco_Duro"^^xsd:string .
 
 
-###  http://www.computador.org#Disenos_Computadores
-:Disenos_Computadores rdf:type owl:Class ;
-                      rdfs:subClassOf :Computador ;
-                      rdfs:comment "Los diferentes diseños de computadores"^^xsd:string ;
-                      rdfs:label "Disenos_Computadores"^^xsd:string .
-
-
 ###  http://www.computador.org#Dual_Core
 :Dual_Core rdf:type owl:Class ;
-           rdfs:subClassOf :CPU ;
+           rdfs:subClassOf :Nucleo_CPU ;
            rdfs:comment "Dos nucleos"^^xsd:string ;
            rdfs:label "Dual_Core"^^xsd:string .
 
@@ -421,13 +400,6 @@
      rdfs:label "HDD"^^xsd:string .
 
 
-###  http://www.computador.org#Hibrida
-:Hibrida rdf:type owl:Class ;
-         rdfs:subClassOf :GPU ;
-         rdfs:comment "Dedicada + Integrada"^^xsd:string ;
-         rdfs:label "Hibrida"^^xsd:string .
-
-
 ###  http://www.computador.org#Integrada
 :Integrada rdf:type owl:Class ;
            rdfs:subClassOf :GPU ;
@@ -437,8 +409,8 @@
 
 ###  http://www.computador.org#Liquido
 :Liquido rdf:type owl:Class ;
-         rdfs:subClassOf :Cooler ;
-         rdfs:comment "Cooler de tipo liquido"^^xsd:string ;
+         rdfs:subClassOf :Tipo_Refrigeracion ;
+         rdfs:comment "Tipo_Refrigeracion de tipo liquido"^^xsd:string ;
          rdfs:label "Liquido"^^xsd:string .
 
 
@@ -508,9 +480,16 @@
 
 ###  http://www.computador.org#Macbook_Pro
 :Macbook_Pro rdf:type owl:Class ;
-             rdfs:subClassOf :Disenos_Computadores ;
+             rdfs:subClassOf :Marca_Modelo ;
              rdfs:comment "La línea de computadores MacBook Pro"^^xsd:string ;
              rdfs:label "Macbook_Pro"^^xsd:string .
+
+
+###  http://www.computador.org#Marca_Modelo
+:Marca_Modelo rdf:type owl:Class ;
+              rdfs:subClassOf :Computador ;
+              rdfs:comment "Los diferentes diseños de computadores"^^xsd:string ;
+              rdfs:label "Marca_Modelo"^^xsd:string .
 
 
 ###  http://www.computador.org#Micro-ATX
@@ -527,9 +506,16 @@
           rdfs:label "Mini-ITX"^^xsd:string .
 
 
+###  http://www.computador.org#Nucleo_CPU
+:Nucleo_CPU rdf:type owl:Class ;
+            rdfs:subClassOf :Parte_Computador ;
+            rdfs:comment "Un procesador"^^xsd:string ;
+            rdfs:label "Nucleo_CPU"^^xsd:string .
+
+
 ###  http://www.computador.org#Octa_Core
 :Octa_Core rdf:type owl:Class ;
-           rdfs:subClassOf :CPU ;
+           rdfs:subClassOf :Nucleo_CPU ;
            rdfs:comment "Ocho nucleos"^^xsd:string ;
            rdfs:label "Octa_Core"^^xsd:string .
 
@@ -550,7 +536,7 @@
 
 ###  http://www.computador.org#Quad_Core
 :Quad_Core rdf:type owl:Class ;
-           rdfs:subClassOf :CPU ;
+           rdfs:subClassOf :Nucleo_CPU ;
            rdfs:comment "Cuatro nucleos"^^xsd:string ;
            rdfs:label "Quad_Core"^^xsd:string .
 
@@ -564,14 +550,14 @@
 
 ###  http://www.computador.org#Single_Core
 :Single_Core rdf:type owl:Class ;
-             rdfs:subClassOf :CPU ;
+             rdfs:subClassOf :Nucleo_CPU ;
              rdfs:comment "Un sólo nucleo"^^xsd:string ;
              rdfs:label "Single_Core"^^xsd:string .
 
 
 ###  http://www.computador.org#ThinkPad
 :ThinkPad rdf:type owl:Class ;
-          rdfs:subClassOf :Disenos_Computadores ;
+          rdfs:subClassOf :Marca_Modelo ;
           rdfs:comment "La línea de computadres ThinkPad"^^xsd:string ;
           rdfs:label "ThinkPad"^^xsd:string .
 
@@ -589,11 +575,15 @@
                                  ] ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :tiene_Parte ;
+                                   owl:someValuesFrom :Dedicada
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :tiene_Parte ;
                                    owl:someValuesFrom :EATX
                                  ] ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :tiene_Parte ;
-                                   owl:someValuesFrom :Hibrida
+                                   owl:someValuesFrom :Integrada
                                  ] ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :tiene_Parte ;
@@ -644,6 +634,13 @@
                                     ] ;
                     rdfs:comment "La computadora X1 Carbon"^^xsd:string ;
                     rdfs:label "ThinkPad_X1_Carbon"^^xsd:string .
+
+
+###  http://www.computador.org#Tipo_Refrigeracion
+:Tipo_Refrigeracion rdf:type owl:Class ;
+                    rdfs:subClassOf :Parte_Computador ;
+                    rdfs:comment "Refrigeración para la CPU del computador"^^xsd:string ;
+                    rdfs:label "Tipo_Refrigeracion"^^xsd:string .
 
 
 ###  http://www.computador.org#Torre
@@ -947,14 +944,6 @@
                 :EATX
                 :Micro-ATX
                 :Mini-ITX
-              )
-] .
-
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Dedicada
-                :Hibrida
-                :Integrada
               )
 ] .
 
