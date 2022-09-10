@@ -131,72 +131,6 @@
      rdfs:label "ATX"^^xsd:string .
 
 
-###  http://www.computador.org#Acer_Chromebook_15CB315
-:Acer_Chromebook_15CB315 rdf:type owl:Class ;
-                         rdfs:subClassOf :Chromebook ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :tiene_Gabinete ;
-                                           owl:someValuesFrom :Portatil
-                                         ] ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :tiene_Parte ;
-                                           owl:someValuesFrom :Aire
-                                         ] ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :tiene_Parte ;
-                                           owl:someValuesFrom :Dual_Core
-                                         ] ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :tiene_Parte ;
-                                           owl:someValuesFrom :HDD
-                                         ] ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :tiene_Parte ;
-                                           owl:someValuesFrom :Micro-ATX
-                                         ] ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :tiene_Parte ;
-                                           owl:allValuesFrom :Integrada
-                                         ] ;
-                         rdfs:comment "Acer Chromebook 15CB315"^^xsd:string ;
-                         rdfs:label "Acer_Chromebook_15CB315"^^xsd:string .
-
-
-###  http://www.computador.org#Acer_Nitro5
-:Acer_Nitro5 rdf:type owl:Class ;
-             rdfs:subClassOf :Marca_Modelo ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :tiene_Parte ;
-                               owl:someValuesFrom :Micro-ATX
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :tiene_Parte ;
-                               owl:someValuesFrom :Quad_Core
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :tiene_Parte ;
-                               owl:someValuesFrom [ rdf:type owl:Class ;
-                                                    owl:unionOf ( :HDD
-                                                                  :SSD
-                                                                )
-                                                  ]
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :tiene_Gabinete ;
-                               owl:allValuesFrom :Portatil
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :tiene_Parte ;
-                               owl:allValuesFrom :Aire
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :tiene_Parte ;
-                               owl:allValuesFrom :Dedicada
-                             ] ;
-             rdfs:comment "Portatil Acer Nitro 5"^^xsd:string ;
-             rdfs:label "Acer_Nitro5"^^xsd:string .
-
-
 ###  http://www.computador.org#Aire
 :Aire rdf:type owl:Class ;
       rdfs:subClassOf :Tipo_Refrigeracion ;
@@ -209,44 +143,6 @@
        rdfs:subClassOf :Parte_Computador ;
        rdfs:comment "Tarjeta madre"^^xsd:string ;
        rdfs:label "Board"^^xsd:string .
-
-
-###  http://www.computador.org#Chromebook
-:Chromebook rdf:type owl:Class ;
-            rdfs:subClassOf :Marca_Modelo ;
-            rdfs:comment "La línea de computadores Chromebook"^^xsd:string ;
-            rdfs:label "Chromebook"^^xsd:string .
-
-
-###  http://www.computador.org#Chromebook_Flip
-:Chromebook_Flip rdf:type owl:Class ;
-                 rdfs:subClassOf :Chromebook ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :tiene_Gabinete ;
-                                   owl:someValuesFrom :Portatil
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :tiene_Parte ;
-                                   owl:someValuesFrom :Aire
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :tiene_Parte ;
-                                   owl:someValuesFrom :Dual_Core
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :tiene_Parte ;
-                                   owl:someValuesFrom :Integrada
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :tiene_Parte ;
-                                   owl:someValuesFrom :Mini-ITX
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :tiene_Parte ;
-                                   owl:someValuesFrom :SSD
-                                 ] ;
-                 rdfs:comment "La portatil chromebook flip"^^xsd:string ;
-                 rdfs:label "Chromebook_Flip"^^xsd:string .
 
 
 ###  http://www.computador.org#Computador
@@ -273,7 +169,11 @@
                                                              ) ;
                                           rdf:type owl:Class
                                         ] ;
-                    rdfs:subClassOf :Computador ;
+                    rdfs:subClassOf :Computador ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :tiene_Parte ;
+                                      owl:allValuesFrom :Integrada
+                                    ] ;
                     rdfs:comment "Un computador que sea lo demasiado lento hasta para los estandares actuales, tienden a ser aquellos antes del 2000"^^xsd:string ;
                     rdfs:label "Computador_Antiguo"^^xsd:string .
 
@@ -292,7 +192,11 @@
                                                                       ) ;
                                                    rdf:type owl:Class
                                                  ] ;
-                             rdfs:subClassOf :Computador ;
+                             rdfs:subClassOf :Computador ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :tiene_Parte ;
+                                               owl:allValuesFrom :Integrada
+                                             ] ;
                              rdfs:comment "Como dice la clase, un computador que no alcanza los estandares de velocidad actuales"^^xsd:string ;
                              rdfs:label "Computador_Bajo_Rendimiento"^^xsd:string .
 
@@ -300,16 +204,16 @@
 ###  http://www.computador.org#Computador_Gamer
 :Computador_Gamer rdf:type owl:Class ;
                   owl:equivalentClass [ owl:intersectionOf ( :Computador
-                                                             [ rdf:type owl:Class ;
-                                                               owl:unionOf ( [ rdf:type owl:Restriction ;
-                                                                               owl:onProperty :tiene_Parte ;
-                                                                               owl:someValuesFrom :Dedicada
-                                                                             ]
-                                                                             [ rdf:type owl:Restriction ;
-                                                                               owl:onProperty :tiene_Parte ;
-                                                                               owl:someValuesFrom :Octa_Core
-                                                                             ]
-                                                                           )
+                                                             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :tiene_Parte ;
+                                                                                      owl:someValuesFrom :Dedicada
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :tiene_Parte ;
+                                                                                      owl:someValuesFrom :Octa_Core
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
                                                              ]
                                                            ) ;
                                         rdf:type owl:Class
@@ -414,84 +318,6 @@
          rdfs:label "Liquido"^^xsd:string .
 
 
-###  http://www.computador.org#MacBook_Pro_14
-:MacBook_Pro_14 rdf:type owl:Class ;
-                rdfs:subClassOf :Macbook_Pro ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :tiene_Gabinete ;
-                                  owl:someValuesFrom :Portatil
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :tiene_Parte ;
-                                  owl:someValuesFrom :Aire
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :tiene_Parte ;
-                                  owl:someValuesFrom :EATX
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :tiene_Parte ;
-                                  owl:someValuesFrom :Integrada
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :tiene_Parte ;
-                                  owl:someValuesFrom :Quad_Core
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :tiene_Parte ;
-                                  owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-                                  owl:onClass :Disco_Duro
-                                ] ;
-                rdfs:comment "El computador MacBook Pro 2014"^^xsd:string ;
-                rdfs:label "MacBook_Pro_14"^^xsd:string .
-
-
-###  http://www.computador.org#MacBook_Pro_M2
-:MacBook_Pro_M2 rdf:type owl:Class ;
-                rdfs:subClassOf :Macbook_Pro ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :tiene_Gabinete ;
-                                  owl:someValuesFrom :Portatil
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :tiene_Parte ;
-                                  owl:someValuesFrom :Aire
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :tiene_Parte ;
-                                  owl:someValuesFrom :EATX
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :tiene_Parte ;
-                                  owl:someValuesFrom :Integrada
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :tiene_Parte ;
-                                  owl:someValuesFrom :Quad_Core
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :tiene_Parte ;
-                                  owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-                                  owl:onClass :Disco_Duro
-                                ] ;
-                rdfs:comment "La computadora MacBook Pro M2"^^xsd:string ;
-                rdfs:label "MacBook_Pro_M2"^^xsd:string .
-
-
-###  http://www.computador.org#Macbook_Pro
-:Macbook_Pro rdf:type owl:Class ;
-             rdfs:subClassOf :Marca_Modelo ;
-             rdfs:comment "La línea de computadores MacBook Pro"^^xsd:string ;
-             rdfs:label "Macbook_Pro"^^xsd:string .
-
-
-###  http://www.computador.org#Marca_Modelo
-:Marca_Modelo rdf:type owl:Class ;
-              rdfs:subClassOf :Computador ;
-              rdfs:comment "Los diferentes diseños de computadores"^^xsd:string ;
-              rdfs:label "Marca_Modelo"^^xsd:string .
-
-
 ###  http://www.computador.org#Micro-ATX
 :Micro-ATX rdf:type owl:Class ;
            rdfs:subClassOf :Board ;
@@ -553,87 +379,6 @@
              rdfs:subClassOf :Nucleo_CPU ;
              rdfs:comment "Un sólo nucleo"^^xsd:string ;
              rdfs:label "Single_Core"^^xsd:string .
-
-
-###  http://www.computador.org#ThinkPad
-:ThinkPad rdf:type owl:Class ;
-          rdfs:subClassOf :Marca_Modelo ;
-          rdfs:comment "La línea de computadres ThinkPad"^^xsd:string ;
-          rdfs:label "ThinkPad"^^xsd:string .
-
-
-###  http://www.computador.org#ThinkPad_T14_G3
-:ThinkPad_T14_G3 rdf:type owl:Class ;
-                 rdfs:subClassOf :ThinkPad ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :tiene_Gabinete ;
-                                   owl:someValuesFrom :Portatil
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :tiene_Parte ;
-                                   owl:someValuesFrom :Aire
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :tiene_Parte ;
-                                   owl:someValuesFrom :Dedicada
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :tiene_Parte ;
-                                   owl:someValuesFrom :EATX
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :tiene_Parte ;
-                                   owl:someValuesFrom :Integrada
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :tiene_Parte ;
-                                   owl:someValuesFrom :Quad_Core
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :tiene_Parte ;
-                                   owl:someValuesFrom [ rdf:type owl:Class ;
-                                                        owl:unionOf ( :HDD
-                                                                      :SSD
-                                                                    )
-                                                      ]
-                                 ] ;
-                 rdfs:comment "La computadora ThinkPad T14 G3"^^xsd:string ;
-                 rdfs:label "ThinkPad_T14_G3"^^xsd:string .
-
-
-###  http://www.computador.org#ThinkPad_X1_Carbon
-:ThinkPad_X1_Carbon rdf:type owl:Class ;
-                    rdfs:subClassOf :ThinkPad ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :tiene_Gabinete ;
-                                      owl:someValuesFrom :Portatil
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :tiene_Parte ;
-                                      owl:someValuesFrom :Aire
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :tiene_Parte ;
-                                      owl:someValuesFrom :EATX
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :tiene_Parte ;
-                                      owl:someValuesFrom :Integrada
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :tiene_Parte ;
-                                      owl:someValuesFrom :Quad_Core
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :tiene_Parte ;
-                                      owl:someValuesFrom [ rdf:type owl:Class ;
-                                                           owl:unionOf ( :HDD
-                                                                         :SSD
-                                                                       )
-                                                         ]
-                                    ] ;
-                    rdfs:comment "La computadora X1 Carbon"^^xsd:string ;
-                    rdfs:label "ThinkPad_X1_Carbon"^^xsd:string .
 
 
 ###  http://www.computador.org#Tipo_Refrigeracion
