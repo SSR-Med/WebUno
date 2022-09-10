@@ -134,6 +134,7 @@
 ###  http://www.computador.org#Aire
 :Aire rdf:type owl:Class ;
       rdfs:subClassOf :Tipo_Refrigeracion ;
+      owl:disjointWith :Liquido ;
       rdfs:comment "Tipo_Refrigeracion de tipo aire"^^xsd:string ;
       rdfs:label "Aire"^^xsd:string .
 
@@ -292,7 +293,6 @@
 
 ###  http://www.computador.org#Gabinete
 :Gabinete rdf:type owl:Class ;
-          owl:disjointWith :Parte_Computador ;
           rdfs:comment "La carcasa del computador"^^xsd:string ;
           rdfs:label "Gabinete"^^xsd:string .
 
