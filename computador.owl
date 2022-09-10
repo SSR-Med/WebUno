@@ -262,14 +262,6 @@
                                                                                                     ]
                                                                                                     [ rdf:type owl:Restriction ;
                                                                                                       owl:onProperty :tiene_Parte ;
-                                                                                                      owl:someValuesFrom :dieciseis_GB
-                                                                                                    ]
-                                                                                                    [ rdf:type owl:Restriction ;
-                                                                                                      owl:onProperty :tiene_Parte ;
-                                                                                                      owl:someValuesFrom :ocho_GB
-                                                                                                    ]
-                                                                                                    [ rdf:type owl:Restriction ;
-                                                                                                      owl:onProperty :tiene_Parte ;
                                                                                                       owl:someValuesFrom :treinta_Y_Dos_GB
                                                                                                     ]
                                                                                                   ) ;
