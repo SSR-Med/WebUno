@@ -141,6 +141,15 @@
 
 ###  http://www.computador.org#Board
 :Board rdf:type owl:Class ;
+       owl:equivalentClass [ owl:intersectionOf ( :Parte_Computador
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :tiene_Parte ;
+                                                    owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                    owl:onClass :Ram
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] ;
        rdfs:subClassOf :Parte_Computador ;
        rdfs:comment "Tarjeta madre"^^xsd:string ;
        rdfs:label "Board"^^xsd:string .
@@ -205,16 +214,53 @@
 ###  http://www.computador.org#Computador_Gamer
 :Computador_Gamer rdf:type owl:Class ;
                   owl:equivalentClass [ owl:intersectionOf ( :Computador
-                                                             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                                      owl:onProperty :tiene_Parte ;
-                                                                                      owl:someValuesFrom :Dedicada
-                                                                                    ]
-                                                                                    [ rdf:type owl:Restriction ;
-                                                                                      owl:onProperty :tiene_Parte ;
-                                                                                      owl:someValuesFrom :Octa_Core
-                                                                                    ]
-                                                                                  ) ;
-                                                               rdf:type owl:Class
+                                                             [ rdf:type owl:Class ;
+                                                               owl:unionOf ( [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty :tiene_Parte ;
+                                                                                                      owl:someValuesFrom :Dedicada
+                                                                                                    ]
+                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty :tiene_Parte ;
+                                                                                                      owl:someValuesFrom :Octa_Core
+                                                                                                    ]
+                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty :tiene_Parte ;
+                                                                                                      owl:someValuesFrom :ocho_GB
+                                                                                                    ]
+                                                                                                  ) ;
+                                                                               rdf:type owl:Class
+                                                                             ]
+                                                                             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty :tiene_Parte ;
+                                                                                                      owl:someValuesFrom :Dedicada
+                                                                                                    ]
+                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty :tiene_Parte ;
+                                                                                                      owl:someValuesFrom :Quad_Core
+                                                                                                    ]
+                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty :tiene_Parte ;
+                                                                                                      owl:someValuesFrom :dieciseis_GB
+                                                                                                    ]
+                                                                                                  ) ;
+                                                                               rdf:type owl:Class
+                                                                             ]
+                                                                             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty :tiene_Parte ;
+                                                                                                      owl:someValuesFrom :Integrada
+                                                                                                    ]
+                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty :tiene_Parte ;
+                                                                                                      owl:someValuesFrom :Octa_Core
+                                                                                                    ]
+                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty :tiene_Parte ;
+                                                                                                      owl:someValuesFrom :treinta_Y_Dos_GB
+                                                                                                    ]
+                                                                                                  ) ;
+                                                                               rdf:type owl:Class
+                                                                             ]
+                                                                           )
                                                              ]
                                                            ) ;
                                         rdf:type owl:Class
@@ -367,6 +413,13 @@
            rdfs:label "Quad_Core"^^xsd:string .
 
 
+###  http://www.computador.org#Ram
+:Ram rdf:type owl:Class ;
+     rdfs:subClassOf :Parte_Computador ;
+     rdfs:comment "Tarjeta Ram"^^xsd:string ;
+     rdfs:label "Ram"^^xsd:string .
+
+
 ###  http://www.computador.org#SSD
 :SSD rdf:type owl:Class ;
      rdfs:subClassOf :Disco_Duro ;
@@ -393,6 +446,41 @@
        rdfs:subClassOf :Gabinete ;
        rdfs:comment "Si es un computador de mesa"^^xsd:string ;
        rdfs:label "Torre"^^xsd:string .
+
+
+###  http://www.computador.org#dieciseis_GB
+:dieciseis_GB rdf:type owl:Class ;
+              rdfs:subClassOf :Ram ;
+              rdfs:comment "Ram 16gb"^^xsd:string ;
+              rdfs:label "dieciseis_GB"^^xsd:string .
+
+
+###  http://www.computador.org#dos_GB
+:dos_GB rdf:type owl:Class ;
+        rdfs:subClassOf :Ram ;
+        rdfs:comment "Ram 2gb"^^xsd:string ;
+        rdfs:label "dos_GB"^^xsd:string .
+
+
+###  http://www.computador.org#treinta_Y_Dos_GB
+:treinta_Y_Dos_GB rdf:type owl:Class ;
+                                 rdfs:subClassOf :Ram ;
+                                 rdfs:comment "Ram 32gb"^^xsd:string ;
+                                 rdfs:label "treinta_Y_Dos_GB"^^xsd:string .
+
+
+###  http://www.computador.org#cuatro_GB
+:cuatro_GB rdf:type owl:Class ;
+                                rdfs:subClassOf :Ram ;
+                                rdfs:comment "Ram 4gb"^^xsd:string ;
+                                rdfs:label "cuatro_GB"^^xsd:string .
+
+
+###  http://www.computador.org#ocho_GB
+:ocho_GB rdf:type owl:Class ;
+                                rdfs:subClassOf :Ram ;
+                                rdfs:comment "Ram 8gb"^^xsd:string ;
+                                rdfs:label "ocho_GB"^^xsd:string .
 
 
 #################################################################
