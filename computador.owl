@@ -141,15 +141,6 @@
 
 ###  http://www.computador.org#Board
 :Board rdf:type owl:Class ;
-       owl:equivalentClass [ owl:intersectionOf ( :Parte_Computador
-                                                  [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :tiene_Parte ;
-                                                    owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-                                                    owl:onClass :Ram
-                                                  ]
-                                                ) ;
-                             rdf:type owl:Class
-                           ] ;
        rdfs:subClassOf :Parte_Computador ;
        rdfs:comment "Tarjeta madre"^^xsd:string ;
        rdfs:label "Board"^^xsd:string .
@@ -172,9 +163,16 @@
 ###  http://www.computador.org#Computador_Antiguo
 :Computador_Antiguo rdf:type owl:Class ;
                     owl:equivalentClass [ owl:intersectionOf ( :Computador
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :tiene_Parte ;
-                                                                 owl:someValuesFrom :Single_Core
+                                                               [ rdf:type owl:Class ;
+                                                                 owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :tiene_Parte ;
+                                                                                 owl:someValuesFrom :Dos_GB
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :tiene_Parte ;
+                                                                                 owl:someValuesFrom :Single_Core
+                                                                               ]
+                                                                             )
                                                                ]
                                                              ) ;
                                           rdf:type owl:Class
@@ -192,11 +190,22 @@
 :Computador_Bajo_Rendimiento rdf:type owl:Class ;
                              owl:equivalentClass [ owl:intersectionOf ( :Computador
                                                                         [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                                                 owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                 owl:onProperty :tiene_Parte ;
+                                                                                                                 owl:someValuesFrom :Cuatro_GB
+                                                                                                               ]
+                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                 owl:onProperty :tiene_Parte ;
+                                                                                                                 owl:someValuesFrom :Dos_GB
+                                                                                                               ]
+                                                                                                             )
+                                                                                               ]
+                                                                                               [ rdf:type owl:Class ;
                                                                                                  owl:complementOf :Computador_Gamer
                                                                                                ]
                                                                                                [ rdf:type owl:Restriction ;
                                                                                                  owl:onProperty :tiene_Parte ;
-                                                                                                 owl:allValuesFrom :dos_GB
+                                                                                                 owl:someValuesFrom :Dual_Core
                                                                                                ]
                                                                                                [ rdf:type owl:Restriction ;
                                                                                                  owl:onProperty :tiene_Parte ;
@@ -228,11 +237,11 @@
                                                                                                     ]
                                                                                                     [ rdf:type owl:Restriction ;
                                                                                                       owl:onProperty :tiene_Parte ;
-                                                                                                      owl:someValuesFrom :Octa_Core
+                                                                                                      owl:someValuesFrom :Dieciseis_GB
                                                                                                     ]
                                                                                                     [ rdf:type owl:Restriction ;
                                                                                                       owl:onProperty :tiene_Parte ;
-                                                                                                      owl:someValuesFrom :ocho_GB
+                                                                                                      owl:someValuesFrom :Quad_Core
                                                                                                     ]
                                                                                                   ) ;
                                                                                rdf:type owl:Class
@@ -243,11 +252,11 @@
                                                                                                     ]
                                                                                                     [ rdf:type owl:Restriction ;
                                                                                                       owl:onProperty :tiene_Parte ;
-                                                                                                      owl:someValuesFrom :Quad_Core
+                                                                                                      owl:someValuesFrom :Ocho_GB
                                                                                                     ]
                                                                                                     [ rdf:type owl:Restriction ;
                                                                                                       owl:onProperty :tiene_Parte ;
-                                                                                                      owl:someValuesFrom :dieciseis_GB
+                                                                                                      owl:someValuesFrom :Octa_Core
                                                                                                     ]
                                                                                                   ) ;
                                                                                rdf:type owl:Class
@@ -262,7 +271,7 @@
                                                                                                     ]
                                                                                                     [ rdf:type owl:Restriction ;
                                                                                                       owl:onProperty :tiene_Parte ;
-                                                                                                      owl:someValuesFrom :treinta_Y_Dos_GB
+                                                                                                      owl:someValuesFrom :Treinta_Y_Dos_GB
                                                                                                     ]
                                                                                                   ) ;
                                                                                rdf:type owl:Class
@@ -281,6 +290,19 @@
                                                                [ rdf:type owl:Class ;
                                                                  owl:complementOf :Computador_Antiguo
                                                                ]
+                                                               [ rdf:type owl:Class ;
+                                                                 owl:complementOf [ rdf:type owl:Class ;
+                                                                                    owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty :tiene_Parte ;
+                                                                                                    owl:someValuesFrom :Cuatro_GB
+                                                                                                  ]
+                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty :tiene_Parte ;
+                                                                                                    owl:someValuesFrom :Dos_GB
+                                                                                                  ]
+                                                                                                )
+                                                                                  ]
+                                                               ]
                                                                [ rdf:type owl:Restriction ;
                                                                  owl:onProperty :tiene_Parte ;
                                                                  owl:maxQualifiedCardinality "8"^^xsd:nonNegativeInteger ;
@@ -297,13 +319,26 @@
 ###  http://www.computador.org#Computador_Oficina
 :Computador_Oficina rdf:type owl:Class ;
                     owl:equivalentClass [ owl:intersectionOf ( :Computador
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :tiene_Parte ;
-                                                                 owl:someValuesFrom :Integrada
+                                                               [ rdf:type owl:Class ;
+                                                                 owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :tiene_Parte ;
+                                                                                 owl:someValuesFrom :Cuatro_GB
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :tiene_Parte ;
+                                                                                 owl:someValuesFrom :Ocho_GB
+                                                                               ]
+                                                                             )
+                                                               ]
+                                                               [ rdf:type owl:Class ;
+                                                                 owl:complementOf [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :tiene_Parte ;
+                                                                                    owl:someValuesFrom :Octa_Core
+                                                                                  ]
                                                                ]
                                                                [ rdf:type owl:Restriction ;
                                                                  owl:onProperty :tiene_Parte ;
-                                                                 owl:someValuesFrom :cuatro_GB
+                                                                 owl:someValuesFrom :Integrada
                                                                ]
                                                              ) ;
                                           rdf:type owl:Class
@@ -313,6 +348,13 @@
                     rdfs:label "Computador_Oficina"^^xsd:string .
 
 
+###  http://www.computador.org#Cuatro_GB
+:Cuatro_GB rdf:type owl:Class ;
+           rdfs:subClassOf :Ram ;
+           rdfs:comment "Ram 4gb"^^xsd:string ;
+           rdfs:label "Cuatro_GB"^^xsd:string .
+
+
 ###  http://www.computador.org#Dedicada
 :Dedicada rdf:type owl:Class ;
           rdfs:subClassOf :GPU ;
@@ -320,11 +362,25 @@
           rdfs:label "Dedicada"^^xsd:string .
 
 
+###  http://www.computador.org#Dieciseis_GB
+:Dieciseis_GB rdf:type owl:Class ;
+              rdfs:subClassOf :Ram ;
+              rdfs:comment "Ram 16gb"^^xsd:string ;
+              rdfs:label "Dieciseis_GB"^^xsd:string .
+
+
 ###  http://www.computador.org#Disco_Duro
 :Disco_Duro rdf:type owl:Class ;
             rdfs:subClassOf :Parte_Computador ;
             rdfs:comment "Los disco duros de almacenamientos"^^xsd:string ;
             rdfs:label "Disco_Duro"^^xsd:string .
+
+
+###  http://www.computador.org#Dos_GB
+:Dos_GB rdf:type owl:Class ;
+        rdfs:subClassOf :Ram ;
+        rdfs:comment "Ram 2gb"^^xsd:string ;
+        rdfs:label "Dos_GB"^^xsd:string .
 
 
 ###  http://www.computador.org#Dual_Core
@@ -396,6 +452,13 @@
             rdfs:label "Nucleo_CPU"^^xsd:string .
 
 
+###  http://www.computador.org#Ocho_GB
+:Ocho_GB rdf:type owl:Class ;
+         rdfs:subClassOf :Ram ;
+         rdfs:comment "Ram 8gb"^^xsd:string ;
+         rdfs:label "Ocho_GB"^^xsd:string .
+
+
 ###  http://www.computador.org#Octa_Core
 :Octa_Core rdf:type owl:Class ;
            rdfs:subClassOf :Nucleo_CPU ;
@@ -459,39 +522,11 @@
        rdfs:label "Torre"^^xsd:string .
 
 
-###  http://www.computador.org#cuatro_GB
-:cuatro_GB rdf:type owl:Class ;
-           rdfs:subClassOf :Ram ;
-           rdfs:comment "Ram 4gb"^^xsd:string ;
-           rdfs:label "cuatro_GB"^^xsd:string .
-
-
-###  http://www.computador.org#dieciseis_GB
-:dieciseis_GB rdf:type owl:Class ;
-              rdfs:subClassOf :Ram ;
-              rdfs:comment "Ram 16gb"^^xsd:string ;
-              rdfs:label "dieciseis_GB"^^xsd:string .
-
-
-###  http://www.computador.org#dos_GB
-:dos_GB rdf:type owl:Class ;
-        rdfs:subClassOf :Ram ;
-        rdfs:comment "Ram 2gb"^^xsd:string ;
-        rdfs:label "dos_GB"^^xsd:string .
-
-
-###  http://www.computador.org#ocho_GB
-:ocho_GB rdf:type owl:Class ;
-         rdfs:subClassOf :Ram ;
-         rdfs:comment "Ram 8gb"^^xsd:string ;
-         rdfs:label "ocho_GB"^^xsd:string .
-
-
-###  http://www.computador.org#treinta_Y_Dos_GB
-:treinta_Y_Dos_GB rdf:type owl:Class ;
+###  http://www.computador.org#Treinta_Y_Dos_GB
+:Treinta_Y_Dos_GB rdf:type owl:Class ;
                   rdfs:subClassOf :Ram ;
                   rdfs:comment "Ram 32gb"^^xsd:string ;
-                  rdfs:label "treinta_Y_Dos_GB"^^xsd:string .
+                  rdfs:label "Treinta_Y_Dos_GB"^^xsd:string .
 
 
 #################################################################
@@ -503,15 +538,7 @@
                           :Computador_Gamer ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :tiene_Parte ;
-                            owl:someValuesFrom :dieciseis_GB
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :tiene_Parte ;
-                            owl:someValuesFrom :ocho_GB
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :tiene_Parte ;
-                            owl:someValuesFrom :treinta_Y_Dos_GB
+                            owl:someValuesFrom :Ocho_GB
                           ] ;
                  owl:sameAs :Computador_Gamer ;
                  :tiene_Precio 3750000 ;
@@ -524,7 +551,7 @@
                             :Computador_Bajo_Rendimiento ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :tiene_Parte ;
-                              owl:someValuesFrom :dos_GB
+                              owl:someValuesFrom :Dos_GB
                             ] ;
                    rdfs:comment "El computador Chromebook 113180"^^xsd:string ;
                    rdfs:label "ChromeBook_113180"^^xsd:string .
@@ -535,15 +562,7 @@
                            :Computador_Gamer ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :tiene_Parte ;
-                             owl:someValuesFrom :dieciseis_GB
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :tiene_Parte ;
-                             owl:someValuesFrom :ocho_GB
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :tiene_Parte ;
-                             owl:someValuesFrom :treinta_Y_Dos_GB
+                             owl:someValuesFrom :Ocho_GB
                            ] .
 
 
@@ -552,7 +571,7 @@
                             :Computador_Moderno ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :tiene_Parte ;
-                              owl:someValuesFrom :cuatro_GB
+                              owl:someValuesFrom :Ocho_GB
                             ] ;
                    rdfs:comment "El computador HP 250"^^xsd:string ;
                    rdfs:label "Computador_Hp_250"^^xsd:string .
@@ -570,6 +589,10 @@
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :tiene_Parte ;
+                              owl:someValuesFrom :Cuatro_GB
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :tiene_Parte ;
                               owl:someValuesFrom :Dual_Core
                             ] ,
                             [ rdf:type owl:Restriction ;
@@ -583,10 +606,6 @@
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :tiene_Parte ;
                               owl:someValuesFrom :Integrada
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :tiene_Parte ;
-                              owl:someValuesFrom :cuatro_GB
                             ] ;
                    :tiene_Precio 2749901 ;
                    rdfs:comment "El computador Lenovo IdeaCenter"^^xsd:string ;
@@ -617,11 +636,11 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :tiene_Parte ;
-                             owl:someValuesFrom :Octa_Core
+                             owl:someValuesFrom :Ocho_GB
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :tiene_Parte ;
-                             owl:someValuesFrom :ocho_GB
+                             owl:someValuesFrom :Octa_Core
                            ] ;
                   :tiene_Precio 23999901 ;
                   rdfs:comment "El computador Lenovo IdeaPad 3"^^xsd:string ;
@@ -680,15 +699,15 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :tiene_Parte ;
+                          owl:someValuesFrom :Ocho_GB
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :tiene_Parte ;
                           owl:someValuesFrom :Octa_Core
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :tiene_Parte ;
                           owl:someValuesFrom :SSD
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :tiene_Parte ;
-                          owl:someValuesFrom :ocho_GB
                         ] ;
                :tiene_Coincidencia :Victus_dlh008 ;
                :tiene_Precio 7499000 ;
@@ -716,15 +735,15 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :tiene_Parte ;
+                          owl:someValuesFrom :Dieciseis_GB
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :tiene_Parte ;
                           owl:someValuesFrom :Quad_Core
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :tiene_Parte ;
                           owl:someValuesFrom :SSD
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :tiene_Parte ;
-                          owl:someValuesFrom :dieciseis_GB
                         ] ;
                :tiene_Precio 7499000 ;
                rdfs:comment "El computador dlh008"^^xsd:string ;
