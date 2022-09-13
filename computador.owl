@@ -163,16 +163,13 @@
 ###  http://www.computador.org#Computador_Antiguo
 :Computador_Antiguo rdf:type owl:Class ;
                     owl:equivalentClass [ owl:intersectionOf ( :Computador
-                                                               [ rdf:type owl:Class ;
-                                                                 owl:unionOf ( [ rdf:type owl:Restriction ;
-                                                                                 owl:onProperty :tiene_Parte ;
-                                                                                 owl:someValuesFrom :Dos_GB
-                                                                               ]
-                                                                               [ rdf:type owl:Restriction ;
-                                                                                 owl:onProperty :tiene_Parte ;
-                                                                                 owl:someValuesFrom :Single_Core
-                                                                               ]
-                                                                             )
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :tiene_Parte ;
+                                                                 owl:someValuesFrom :Dos_GB
+                                                               ]
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :tiene_Parte ;
+                                                                 owl:someValuesFrom :Single_Core
                                                                ]
                                                              ) ;
                                           rdf:type owl:Class
