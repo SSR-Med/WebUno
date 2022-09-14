@@ -578,7 +578,7 @@
 :Lenovo_IdeaCenter rdf:type owl:NamedIndividual ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :tiene_Gabinete ;
-                              owl:someValuesFrom :Portatil
+                              owl:someValuesFrom :Torre
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :tiene_Parte ;
@@ -613,7 +613,7 @@
 :Lenovo_Ideapad_3 rdf:type owl:NamedIndividual ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :tiene_Gabinete ;
-                             owl:someValuesFrom :Portatil
+                             owl:someValuesFrom :Torre
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :tiene_Parte ;
@@ -653,6 +653,10 @@
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :tiene_Parte ;
                            owl:someValuesFrom :Aire
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :tiene_Parte ;
+                           owl:someValuesFrom :Dos_GB
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :tiene_Parte ;
@@ -765,6 +769,10 @@
                   ] ,
                   [ rdf:type owl:Restriction ;
                     owl:onProperty :tiene_Parte ;
+                    owl:someValuesFrom :Dos_GB
+                  ] ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :tiene_Parte ;
                     owl:someValuesFrom :HDD
                   ] ,
                   [ rdf:type owl:Restriction ;
@@ -789,6 +797,10 @@
                   [ rdf:type owl:Restriction ;
                     owl:onProperty :tiene_Parte ;
                     owl:someValuesFrom :Aire
+                  ] ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :tiene_Parte ;
+                    owl:someValuesFrom :Dos_GB
                   ] ,
                   [ rdf:type owl:Restriction ;
                     owl:onProperty :tiene_Parte ;
@@ -817,6 +829,10 @@
                   [ rdf:type owl:Restriction ;
                     owl:onProperty :tiene_Parte ;
                     owl:someValuesFrom :Aire
+                  ] ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :tiene_Parte ;
+                    owl:someValuesFrom :Dos_GB
                   ] ,
                   [ rdf:type owl:Restriction ;
                     owl:onProperty :tiene_Parte ;
