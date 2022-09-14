@@ -285,25 +285,34 @@
 :Computador_Moderno rdf:type owl:Class ;
                     owl:equivalentClass [ owl:intersectionOf ( :Computador
                                                                [ rdf:type owl:Class ;
-                                                                 owl:complementOf :Computador_Antiguo
+                                                                 owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :tiene_Parte ;
+                                                                                 owl:someValuesFrom :Dieciseis_GB
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :tiene_Parte ;
+                                                                                 owl:someValuesFrom :Ocho_GB
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :tiene_Parte ;
+                                                                                 owl:someValuesFrom :Treinta_Y_Dos_GB
+                                                                               ]
+                                                                             )
                                                                ]
                                                                [ rdf:type owl:Class ;
-                                                                 owl:complementOf [ rdf:type owl:Class ;
-                                                                                    owl:unionOf ( [ rdf:type owl:Restriction ;
-                                                                                                    owl:onProperty :tiene_Parte ;
-                                                                                                    owl:someValuesFrom :Cuatro_GB
-                                                                                                  ]
-                                                                                                  [ rdf:type owl:Restriction ;
-                                                                                                    owl:onProperty :tiene_Parte ;
-                                                                                                    owl:someValuesFrom :Dos_GB
-                                                                                                  ]
-                                                                                                )
-                                                                                  ]
-                                                               ]
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :tiene_Parte ;
-                                                                 owl:maxQualifiedCardinality "8"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :Disco_Duro
+                                                                 owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :tiene_Parte ;
+                                                                                 owl:someValuesFrom :Dual_Core
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :tiene_Parte ;
+                                                                                 owl:someValuesFrom :Octa_Core
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :tiene_Parte ;
+                                                                                 owl:someValuesFrom :Quad_Core
+                                                                               ]
+                                                                             )
                                                                ]
                                                              ) ;
                                           rdf:type owl:Class
@@ -317,6 +326,23 @@
 :Computador_Oficina rdf:type owl:Class ;
                     owl:equivalentClass [ owl:intersectionOf ( :Computador
                                                                [ rdf:type owl:Class ;
+                                                                 owl:unionOf ( [ rdf:type owl:Class ;
+                                                                                 owl:complementOf [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty :tiene_Parte ;
+                                                                                                    owl:someValuesFrom :Octa_Core
+                                                                                                  ]
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :tiene_Parte ;
+                                                                                 owl:someValuesFrom :Dual_Core
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :tiene_Parte ;
+                                                                                 owl:someValuesFrom :Quad_Core
+                                                                               ]
+                                                                             )
+                                                               ]
+                                                               [ rdf:type owl:Class ;
                                                                  owl:unionOf ( [ rdf:type owl:Restriction ;
                                                                                  owl:onProperty :tiene_Parte ;
                                                                                  owl:someValuesFrom :Cuatro_GB
@@ -326,12 +352,6 @@
                                                                                  owl:someValuesFrom :Ocho_GB
                                                                                ]
                                                                              )
-                                                               ]
-                                                               [ rdf:type owl:Class ;
-                                                                 owl:complementOf [ rdf:type owl:Restriction ;
-                                                                                    owl:onProperty :tiene_Parte ;
-                                                                                    owl:someValuesFrom :Octa_Core
-                                                                                  ]
                                                                ]
                                                                [ rdf:type owl:Restriction ;
                                                                  owl:onProperty :tiene_Parte ;
